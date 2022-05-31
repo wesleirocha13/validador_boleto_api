@@ -6,10 +6,12 @@
   "author": "Weslei Souza <weslei.souza@acuttis.com.br>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/bin/server.js",
-    "start": "node ./src/bin/server.js"
+    "dev": "nodemon ./src/bin/server.js --ignore __tests__",
+    "start": "node ./src/bin/server.js",
+    "test": "jest"
   },
   "dependencies": {
+    "@types/jest": "^27.5.1",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -17,6 +19,8 @@
     "helmet": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   }
 }
