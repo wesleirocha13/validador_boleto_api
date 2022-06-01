@@ -1,15 +1,11 @@
-const {validateBankSlip} = require('../services/bankSlipService')
+const { validateBankSlip, getInformationsToBarCode} = require('../services/bankSlipService')
 
-exports.get = async (req, res, next) => {
+exports.get = async (req, res) => {
     try {
         const { code } = req.params;
-        validateBankSlip(code);
-
-        res.status(200).send({
-            barCode: '2020',
-            amount: '20.00',
-            expirationDate: '2022-05-30'
-        });
+        const barCode = validateBankSlip(code);
+        const response = getInformationsToBarCode(barCode);
+        res.status(200).send(response);
     } catch (err) {
         res.status(400).send({
             message: (err && err.message) || "Falha ao processar sua requisição"

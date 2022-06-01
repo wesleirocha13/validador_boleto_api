@@ -94,28 +94,29 @@ describe('Validate code', ()=>{
 
     it('Must return true for valid bank slip banking digitableLine', () => {
         const digitableLine = '23793.38128 60083.483721 93000.063300 1 90030000010000';
+        const barCode = '23791900300000100003381260083483729300006330';
         const result = validateBankSlip(digitableLine);
-        expect(result).toBe(true);        
+        expect(result).toBe(barCode);        
     });
 
     it('Must return true for valid bank slip banking barcode', () => {
         const barCode = '23791900300000100003381260083483729300006330';
         const result = validateBankSlip(barCode);
-        expect(result).toBe(true);        
+        expect(result).toBe(barCode);        
     });
 
     it('Must return true for valid bank slip concessionaires digitableLine', () => {
         const digitableLine = '83630000002-0 70990138000-2 66854599411-7 08061488675-4';
+        const barCode = '83630000002709901380006685459941108061488675';
         const result = validateBankSlip(digitableLine);
-        expect(result).toBe(true);        
+        expect(result).toBe(barCode);        
     });
 
     it('Must return true for valid bank slip concessionaires barcode', () => {
         const barCode = '83630000002709901380006685459941108061488675';
         const result = validateBankSlip(barCode);
-        expect(result).toBe(true);        
+        expect(result).toBe(barCode);        
     });
-
 
     it('Must return error for invalid bank slip banking digitableLine', () => {
         try{
