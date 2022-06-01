@@ -1,7 +1,11 @@
+const {validateBankSlip} = require('../services/bankSlipService')
 
 exports.get = async (req, res, next) => {
     try {
-        // const digitableLine = req.query.digitableLine;
+        const { code } = req.params;
+        validateBankSlip(code);
+
+
         res.status(200).send({
             barCode: '2020',
             amount: '20.00',
