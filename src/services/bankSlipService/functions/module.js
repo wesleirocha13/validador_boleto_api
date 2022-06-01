@@ -15,7 +15,6 @@ const module10 = (barCode) => {
 
 //Calcula o dígito verificador utilizando módulo 11 com base código de barras sem o dígito verificador
 const module11 = (barCode, bankSlipType) => {
-  console.log(barCode)
   let multiplierDigit = INITIAL_MULTIPLIER;
   const arrayDigitsbarCode = barCode.split("").reverse();
 
@@ -29,8 +28,6 @@ const module11 = (barCode, bankSlipType) => {
   }, 0);
 
   const restDivision = summation % MODULE_ELEVEN;
-
-  console.log(restDivision)
 
   if (bankSlipType === "banking") {
     return calcVerifyingDigitBanking(restDivision);

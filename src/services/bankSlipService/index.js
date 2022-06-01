@@ -21,7 +21,9 @@ const validateBankSlip = (code)=>{
         isValid = validateConcessionaires(barCode);
     }
 
-    if(!isValid) throw Error('O código inserido é inválido.')
+    if(!isValid) throw Error('O código inserido é inválido.');
+
+    return true;
 }
 
 module.exports = { validateBankSlip };

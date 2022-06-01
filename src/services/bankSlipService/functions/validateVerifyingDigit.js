@@ -8,7 +8,7 @@ const validateBanking = (barCode) => {
 }
 
 const validateConcessionaires = (barCode) => {
-  if (!/^[0-9]{44}$/.test(barCode) || Number(barCode[0]) !== 8) return false;
+  if (!/^[0-9]{44}$/.test(barCode)) return false;
   const currencyCode = Number(barCode[2]);
   const verifyingDigit = Number(barCode[3]);
   const barcodeWithoutVerificationDigit = barCode.substring(0, 3) + barCode.substring(4);

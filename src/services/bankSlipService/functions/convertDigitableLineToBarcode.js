@@ -1,14 +1,16 @@
 const { removeMask } = require('../../../utils/stringManipulation');
 
 const convertDigitableLineToBarcode = (code, bankSlipType)=> {
-  const unmaskedCode = removeMask(code);
-  let barCode = '';
-  if(bankSlipType === 'banking'){
-    barCode = bankSlipBankingDigitableLineToBarcode(unmaskedCode);
-  }else{
-    barCode = bankSlipConcessionairesgDigitableLineToBarcode(unmaskedCode);
+  try{
+    const unmaskedCode = removeMask(code);
+    const convertTypes = {
+      'banking': ()=> bankSlipBankingDigitableLineToBarcode(unmaskedCode),
+      'concessionaires': ()=> bankSlipConcessionairesgDigitableLineToBarcode(unmaskedCode),
+    };
+    return convertTypes[bankSlipType]();
+  }catch(err){
+    throw Error('Erro durante a conversão do código de barras do boleto.');
   }
-  return barCode;
 }
 
 //A conversão é feita retirando os três dígitos verificadores. Posições dos dígitos: 12, 24 e 36
